@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>每日英语学习 · 2026-07-06</title>
+<style>
+:root {
+  --primary: #2563eb;
+  --primary-light: #eff6ff;
+  --accent: #f59e0b;
+  --bg: #f8fafc;
+  --card-bg: #ffffff;
+  --text: #1e293b;
+  --text-secondary: #64748b;
+  --border: #e2e8f0;
+  --success: #10b981;
+  --shadow: 0 1px 3px rgba(0,0,0,0.06), 0 1px 2px rgba(0,0,0,0.04);
+  --shadow-hover: 0 10px 25px -5px rgba(0,0,0,0.1), 0 8px 10px -6px rgba(0,0,0,0.04);
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', sans-serif;
+  background: var(--bg); color: var(--text); line-height: 1.6; padding-bottom: 80px;
+}
+header {
+  background: linear-gradient(135deg, #2563eb 0%, #06b6d4 100%);
+  color: white; padding: 40px 20px 30px; text-align: center; position: relative; overflow: hidden;
+}
+header::after {
+  content: ''; position: absolute; top: -50%; left: -50%; width: 200%; height: 200%;
+  background: radial-gradient(circle at 30% 50%, rgba(255,255,255,0.08) 0%, transparent 60%);
+  pointer-events: none;
+}
+header h1 { font-size: 1.5rem; font-weight: 700; letter-spacing: 0.5px; }
+header .date { font-size: 0.85rem; opacity: 0.85; margin-top: 6px; letter-spacing: 1px; }
+header .theme-badge { display: inline-block; margin-top: 10px; padding: 4px 16px; background: rgba(255,255,255,0.2); backdrop-filter: blur(4px); border-radius: 20px; font-size: 0.8rem; font-weight: 500; }
+.container { max-width: 800px; margin: 0 auto; padding: 16px; }
+.section { margin-top: 24px; }
+.section-title {
+  font-size: 1.2rem; font-weight: 700; color: var(--primary); padding: 12px 16px; background: var(--primary-light);
+  border-radius: 12px; margin-bottom: 16px; display: flex; align-items: center; gap: 8px;
+}
+.section-title .badge { font-size: 0.75rem; background: var(--primary); color: white; padding: 2px 10px; border-radius: 10px; margin-left: auto; }
+.vocab-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 12px; }
+.vocab-card {
+  background: var(--card-bg); border: 1px solid var(--border); border-radius: 12px; padding: 16px;
+  transition: all 0.2s ease; cursor: default;
+}
+.vocab-card:hover { box-shadow: var(--shadow-hover); transform: translateY(-2px); }
+.vocab-card .word { font-size: 1.2rem; font-weight: 700; color: var(--text); }
+.vocab-card .phonetic { font-size: 0.85rem; color: var(--text-secondary); font-family: 'IPA', 'Times New Roman', serif; margin-top: 2px; }
+.vocab-card .meaning { font-size: 0.95rem; color: var(--primary); font-weight: 600; margin-top: 6px; }
+.vocab-card .example { font-size: 0.85rem; color: var(--text); margin-top: 8px; padding: 8px 10px; background: #f8fafc; border-radius: 8px; border-left: 3px solid var(--accent); }
+.vocab-card .example-cn { font-size: 0.8rem; color: var(--text-secondary); margin-top: 4px; }
+.vocab-card .tip { font-size: 0.8rem; color: var(--success); margin-top: 8px; padding: 6px 10px; background: #f0fdf4; border-radius: 8px; }
+.vocab-card .tip::before { content: '💡 '; }
+.dialogue-item { background: var(--card-bg); border: 1px solid var(--border); border-radius: 12px; padding: 16px; margin-bottom: 12px; }
+.dialogue-item .scene { font-size: 0.75rem; color: var(--primary); font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 6px; }
+.dialogue-item .en { font-size: 0.95rem; color: var(--text); }
+.dialogue-item .cn { font-size: 0.85rem; color: var(--text-secondary); margin-top: 4px; }
+.writing-item { background: var(--card-bg); border: 1px solid var(--border); border-radius: 12px; padding: 16px; margin-bottom: 12px; }
+.writing-item .para { font-size: 0.9rem; color: var(--text); padding: 10px 12px; background: #f8fafc; border-radius: 8px; border-left: 3px solid var(--primary); }
+.writing-item .para-cn { font-size: 0.85rem; color: var(--text-secondary); margin-top: 8px; }
+.writing-item .tip-text { font-size: 0.8rem; color: var(--accent); margin-top: 8px; padding: 6px 10px; background: #fffbeb; border-radius: 8px; }
+.writing-item .tip-text::before { content: '✏️ '; }
+.bec-item { background: var(--card-bg); border: 1px solid var(--border); border-radius: 12px; padding: 16px; margin-bottom: 20px; }
+.bec-item .bec-title { font-weight: 700; font-size: 1rem; color: var(--text); margin-bottom: 4px; }
+.bec-item .bec-scene { font-size: 0.8rem; color: var(--text-secondary); margin-bottom: 12px; }
+.bec-controls { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 12px; }
+.bec-btn { padding: 8px 16px; border: none; border-radius: 8px; font-size: 0.85rem; font-weight: 600; cursor: pointer; transition: all 0.15s ease; display: inline-flex; align-items: center; gap: 6px; }
+.bec-btn:active { transform: scale(0.96); }
+.bec-btn-play { background: var(--primary); color: white; }
+.bec-btn-play:hover { background: #1d4ed8; }
+.bec-btn-stop { background: #ef4444; color: white; }
+.bec-btn-stop:hover { background: #dc2626; }
+.bec-btn-subtitle { background: var(--border); color: var(--text); }
+.bec-btn-subtitle.active { background: var(--accent); color: white; }
+.bec-btn-playing { background: #10b981 !important; animation: pulse 1.5s infinite; }
+@keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.7; } }
+.subtitle-box { display: none; margin-top: 12px; padding: 12px; background: #f1f5f9; border-radius: 8px; font-size: 0.85rem; line-height: 1.8; }
+.subtitle-box.show { display: block; }
+.subtitle-box .sub-en { color: var(--text); }
+.subtitle-box .sub-cn { color: var(--text-secondary); margin-top: 4px; padding-left: 8px; border-left: 2px solid var(--accent); }
+.bec-tasks { margin-top: 12px; padding: 12px; background: #f0fdf4; border-radius: 8px; }
+.bec-tasks .task-title { font-weight: 700; font-size: 0.85rem; color: var(--success); margin-bottom: 6px; }
+.bec-tasks .task-title::before { content: '📝 '; }
+.bec-tasks ul { padding-left: 20px; font-size: 0.82rem; color: var(--text); }
+.bec-tasks ul li { margin-bottom: 4px; }
+.bec-vocab { margin-top: 12px; padding: 12px; background: #f8fafc; border-radius: 8px; }
+.bec-vocab .vocab-title { font-weight: 700; font-size: 0.85rem; color: var(--primary); margin-bottom: 6px; }
+.bec-vocab .vocab-title::before { content: '📖 '; }
+.bec-vocab .vocab-grid-small { display: flex; flex-wrap: wrap; gap: 6px; }
+.bec-vocab .vocab-chip { padding: 4px 10px; background: var(--primary-light); border-radius: 12px; font-size: 0.78rem; color: var(--primary); }
+footer { text-align: center; padding: 30px 20px; color: var(--text-secondary); font-size: 0.8rem; }
+@media (max-width: 600px) {
+  header { padding: 30px 16px 24px; } header h1 { font-size: 1.25rem; }
+  .vocab-grid { grid-template-columns: 1fr; } .container { padding: 12px; }
+  .bec-controls { gap: 6px; } .bec-btn { font-size: 0.78rem; padding: 6px 12px; }
+}
+html { scroll-behavior: smooth; }
+.progress-bar { position: fixed; top: 0; left: 0; width: 100%; height: 3px; background: var(--border); z-index: 1000; }
+.progress-bar-fill { height: 100%; background: linear-gradient(90deg, var(--primary), var(--accent)); width: 0; transition: width 0.3s ease; }
+</style>
+</head>
+<body>
+<div class="progress-bar"><div class="progress-bar-fill" id="progressFill"></div></div>
+<header>
+  <h1>📖 每日英语学习</h1>
+  <div class="date">2026 年 7 月 6 日 · 星期一</div>
+  <div class="theme-badge">🎯 今日主题：金融理财 & 商务经济</div>
+</header>
+<div class="container">
+<div class="section" id="vocab">
+  <div class="section-title">📚 实用英语单词<span class="badge">10</span></div>
+  <div class="vocab-grid" id="vocabGrid"></div>
+</div>
+<div class="section" id="dialogue">
+  <div class="section-title">💬 每日对话<span class="badge">10 句</span></div>
+  <div id="dialogueList"></div>
+</div>
+<div class="section" id="writing">
+  <div class="section-title">✍️ 英文写作段落<span class="badge">5 段</span></div>
+  <div id="writingList"></div>
+</div>
+<div class="section" id="bec">
+  <div class="section-title">🎧 BEC 中级听力<span class="badge">2 段</span></div>
+  <div id="becList"></div>
+</div>
+<footer>Daily English Learning · 每天进步一点点 🚀</footer>
+</div>
+<script>
+const VOCABULARY = [
+  { word: 'Revenue', phonetic: '/ˈrevənjuː/', meaning: '收入，营收', example: 'The company reported a 15% increase in revenue compared to the previous quarter.', example_cn: '该公司公布的收入比上一季度增长了15%。', tip: 're-（回）+ venue（来），钱"回来"了就是收入。' },
+  { word: 'Profit margin', phonetic: '/ˈprɒfɪt ˈmɑːdʒɪn/', meaning: '利润率', example: 'We need to improve our profit margin by reducing production costs.', example_cn: '我们需要通过降低生产成本来提高利润率。', tip: 'profit（利润）+ margin（边缘），利润在成本和售价之间的边缘。' },
+  { word: 'Budget', phonetic: '/ˈbʌdʒɪt/', meaning: '预算', example: 'Our marketing team has a budget of $50,000 for this campaign.', example_cn: '我们市场团队这次活动的预算是5万美元。', tip: '谐音"巴结它"——巴结预算，花钱要谨慎。' },
+  { word: 'Asset', phonetic: '/ˈæset/', meaning: '资产', example: 'Real estate is generally considered a stable long-term asset.', example_cn: '房地产通常被认为是一种稳定的长期资产。', tip: 'as（像）+ set（一套），像一套有价值的东西就是资产。' },
+  { word: 'Liability', phonetic: '/ˌlaɪəˈbɪləti/', meaning: '负债，责任', example: 'The company has significantly reduced its liabilities over the past two years.', example_cn: '这家公司在过去两年大幅减少了负债。', tip: 'liable（有责任的）+ ility，"有责任偿还"的就是负债。' },
+  { word: 'Inflation', phonetic: '/ɪnˈfleɪʃn/', meaning: '通货膨胀', example: 'Inflation has reached a 10-year high, affecting consumer purchasing power.', example_cn: '通货膨胀达到了10年来的最高点，影响了消费者的购买力。', tip: 'in（进入）+ flat（平）+ ion，钱的面值被"吹平"了，购买力下降。' },
+  { word: 'Diversification', phonetic: '/daɪˌvɜːsɪfɪˈkeɪʃn/', meaning: '多元化，分散投资', example: 'Diversification across different asset classes can reduce investment risk.', example_cn: '在不同资产类别之间进行多元化配置可以降低投资风险。', tip: 'di-（分开）+ verse（转）+ cation，把钱分开转向不同方向。' },
+  { word: 'Return on investment', phonetic: '/rɪˈtɜːn ɒn ɪnˈvestmənt/', meaning: '投资回报率', example: 'We expect to see a strong return on investment within the first 18 months.', example_cn: '我们预计在前18个月内看到可观的投资回报率。', tip: 'ROI 的完整说法，return（回来）+ investment（投资），投资回来的收益。' },
+  { word: 'Cash flow', phonetic: '/ˈkæʃ fləʊ/', meaning: '现金流', example: 'Positive cash flow is essential for maintaining day-to-day operations.', example_cn: '正向现金流对维持日常运营至关重要。', tip: 'cash（现金）+ flow（流动），像水一样流动的现金。' },
+  { word: 'Equity', phonetic: '/ˈekwəti/', meaning: '股权，权益', example: 'The startup raised capital by selling equity to early investors.', example_cn: '这家初创公司通过向早期投资者出售股权来筹集资金。', tip: 'equi（平等）+ ty，平等分享的权益就是股权。' },
+];
+const DIALOGUES = [
+  { scene: '银行开户', en: 'I would like to open a savings account. What are the current interest rates?', cn: '我想开一个储蓄账户。目前的利率是多少？' },
+  { scene: '预算讨论', en: 'Our quarterly budget is almost exhausted. We need to delay non-essential spending.', cn: '我们本季度的预算快用完了。需要推迟非必要支出。' },
+  { scene: '投资建议', en: 'Given your risk profile, I recommend a balanced mix of stocks and bonds.', cn: '根据您的风险偏好，我建议股票和债券均衡配置。' },
+  { scene: '贷款咨询', en: 'What is the interest rate for a personal loan over a five-year period?', cn: '五年期个人贷款的利率是多少？' },
+  { scene: '财报会议', en: 'Revenue grew by 12%, but our net profit margin declined slightly due to higher logistics costs.', cn: '收入增长了12%，但由于物流成本上升，净利润率略有下降。' },
+  { scene: '日常购物', en: 'Prices have gone up so much lately. I think inflation is really affecting our daily expenses.', cn: '最近物价涨了很多。我觉得通货膨胀真的影响了我们的日常开销。' },
+  { scene: '理财咨询', en: 'Do you think I should put more money into real estate or keep it in a diversified portfolio?', cn: '你觉得我应该把更多钱投入房地产，还是保持多元化的投资组合？' },
+  { scene: '保险讨论', en: 'This insurance plan covers critical illness and provides some investment returns as well.', cn: '这份保险计划涵盖重大疾病，同时还能提供一定的投资回报。' },
+  { scene: '薪资谈判', en: 'I am hoping for a salary increase that at least matches the inflation rate this year.', cn: '我希望今年的加薪至少能跟上通货膨胀率。' },
+  { scene: '退休规划', en: 'I want to start planning for retirement. What options do you recommend for long-term savings?', cn: '我想开始规划退休。你对长期储蓄有什么建议？' },
+];
+const WRITING = [
+  { para: 'I hope this email finds you well. I am writing to request an update on the budget approval for the upcoming project. Please let me know if any additional information is required from our side.', para_cn: '见信好。我写信是想了解 upcoming 项目预算审批的最新进展。如需要我方补充任何信息，请随时告知。', tip: '邮件开场简洁明了：直接说明目的。' },
+  { para: 'The quarterly financial report has been finalized. Total revenue reached $1.2 million, representing an 8% year-over-year growth. Operating expenses were well controlled, resulting in a net profit margin of 18%.', para_cn: '季度财务报告已 finalized。总收入达到120万美元，同比增长8%。运营费用控制良好，净利润率为18%。', tip: '财务汇报数据先行：收入、增长、费用、利润，依次呈现。' },
+  { para: 'As discussed in our last meeting, we are now ready to proceed with the investment proposal. The projected return on investment is approximately 15% over a three-year horizon, and the associated risks have been carefully evaluated.', para_cn: '正如我们上次会议讨论的，我们已准备好推进投资提案。预计三年投资回报率约为15%，相关风险已仔细评估。', tip: '投资提案要兼顾收益与风险，体现审慎决策。' },
+  { para: 'Thank you for your time during our financial planning session. Your insights on cash flow management and cost optimization were extremely valuable. I look forward to implementing the recommendations we discussed.', para_cn: '感谢您参加我们的财务规划会议。您关于现金流管理和成本优化的见解非常有价值。期待落实我们讨论的建议。', tip: '感谢信要具体提及对方的贡献，显得真诚。' },
+  { para: 'I apologize for the delayed submission of the expense report. Due to an unexpected delay in receiving invoices from vendors, I was unable to complete the documentation on time. The report is now attached for your review.', para_cn: '我对延迟提交费用报告表示歉意。由于供应商发票延迟，我未能按时完成文档。报告现已附上，请审阅。', tip: '解释原因要简洁，重点放在补救和后续行动上。' },
+];
+const BEC_MATERIALS = [
+  {
+    id: 'bec1', title: '年度预算审批会议', scene: '场景：财务总监和市场总监正在讨论下一财年的预算分配',
+    script: [
+      { en: 'Good morning, Sarah. I\'ve reviewed the budget proposal for the next fiscal year. Overall, it looks reasonable, but I have a few concerns.', cn: '早上好，Sarah。我已经审阅了下一财年的预算提案。总体来看很合理，但我有几个顾虑。' },
+      { en: 'Good morning, David. I appreciate your feedback. Which areas are you most concerned about?', cn: '早上好，David。感谢您的反馈。您最关心哪些领域？' },
+      { en: 'The marketing budget has increased by 25%. Can you justify this significant increase?', cn: '市场预算增加了25%。您能说明这个大幅增长的原因吗？' },
+      { en: 'Certainly. We plan to expand into two new regional markets, and the additional budget covers digital advertising and local promotions.', cn: '当然可以。我们计划扩展到两个新的区域市场，增加的预算用于数字广告和本地推广。' },
+      { en: 'I see. What kind of return on investment are you expecting from this expansion?', cn: '我明白了。您预计这次扩张会带来什么样的投资回报？' },
+      { en: 'Based on our market research, we project a 30% increase in revenue within the first year, with a payback period of 18 months.', cn: '根据我们的市场调研，我们预计第一年收入增长30%，投资回收期为18个月。' },
+      { en: 'That sounds promising. However, I\'d like to see a more detailed cash flow forecast before we finalize the budget.', cn: '听起来很有前景。不过，在最终确定预算之前，我想看到更详细的现金流预测。' },
+      { en: 'Of course. I\'ll ask the finance team to prepare a month-by-month projection by the end of the week.', cn: '当然。我会让财务团队准备一份按月预测的报表，本周内完成。' },
+      { en: 'Thank you. Once we have that, I\'m confident we can approve the revised budget.', cn: '谢谢。拿到那个之后，我相信我们可以批准修订后的预算。' },
+      { en: 'I\'ll get that to you as soon as possible. Thank you for your time, David.', cn: '我会尽快给您。感谢您的时间，David。' },
+    ],
+    tasks: ['David对预算提案的主要顾虑是什么？','Sarah如何解释市场预算25%的增长？','公司计划进入几个新区域市场？','预计收入增长和投资回收期分别是多少？','David在批准预算前要求提供什么额外材料？'],
+    vocab: ['budget proposal', 'fiscal year', 'justify', 'expand into', 'digital advertising', 'return on investment', 'payback period', 'cash flow forecast', 'month-by-month projection']
+  },
+  {
+    id: 'bec2', title: '资产配置咨询', scene: '场景：理财顾问正在为一位客户分析投资组合',
+    script: [
+      { en: 'Thank you for coming in today, Mr. Zhang. I\'ve prepared a review of your current investment portfolio.', cn: '张先生，感谢您今天来。我已经准备好了您当前投资组合的评估。' },
+      { en: 'Thank you. I\'ve been a bit worried about the recent market volatility. Should I be concerned?', cn: '谢谢。我最近对市场波动有些担心。我应该担心吗？' },
+      { en: 'Some concern is natural, but your portfolio is well diversified. About 60% is in equities, 30% in bonds, and 10% in cash.', cn: '有些担心是正常的，但您的投资组合很分散。大约60%是股票，30%是债券，10%是现金。' },
+      { en: 'That sounds balanced. Do you think I should increase my bond allocation given the market conditions?', cn: '听起来很均衡。鉴于目前市场状况，您认为我应该增加债券配置吗？' },
+      { en: 'It depends on your risk tolerance. If you prefer stability, shifting 10% from equities to bonds could reduce short-term volatility.', cn: '这取决于您的风险承受能力。如果您更偏好稳定，将10%从股票转到债券可以降低短期波动。' },
+      { en: 'I see. And what about inflation? I\'m worried that my savings are losing value.', cn: '明白了。那通货膨胀呢？我担心我的储蓄在贬值。' },
+      { en: 'That\'s a valid concern. We could consider adding some inflation-protected assets, such as treasury inflation-protected securities or real estate investment trusts.', cn: '这是一个合理的顾虑。我们可以考虑增加一些抗通胀资产，比如通胀保值国债或房地产投资信托。' },
+      { en: 'That sounds reasonable. How long would it take to rebalance the portfolio?', cn: '听起来合理。重新调整投资组合需要多长时间？' },
+      { en: 'We can execute the trades within two business days once you confirm the revised allocation.', cn: '一旦您确认调整后的配置，我们可以在两个工作日内完成交易。' },
+      { en: 'Let\'s proceed with that then. I\'d like to protect my assets while still aiming for growth.', cn: '那我们就这么做吧。我希望在保护资产的同时仍追求增长。' },
+    ],
+    tasks: ['张先生目前的投资组合配置比例是什么？','顾问建议如何调整配置以降低风险？','张先生担心的两个主要问题是什么？','顾问推荐了哪些抗通胀资产？','重新调整投资组合需要多长时间？'],
+    vocab: ['investment portfolio', 'market volatility', 'diversified', 'equities', 'bonds', 'risk tolerance', 'short-term volatility', 'inflation-protected assets', 'rebalance']
+  }
+];
+const vocabGrid = document.getElementById('vocabGrid');
+VOCABULARY.forEach(v => {
+  const card = document.createElement('div'); card.className = 'vocab-card';
+  card.innerHTML = `<div class="word">${v.word}</div><div class="phonetic">${v.phonetic}</div><div class="meaning">${v.meaning}</div><div class="example">${v.example}</div><div class="example-cn">${v.example_cn}</div><div class="tip">${v.tip}</div>`;
+  vocabGrid.appendChild(card);
+});
+const dialogueList = document.getElementById('dialogueList');
+DIALOGUES.forEach(d => {
+  const item = document.createElement('div'); item.className = 'dialogue-item';
+  item.innerHTML = `<div class="scene">${d.scene}</div><div class="en">${d.en}</div><div class="cn">${d.cn}</div>`;
+  dialogueList.appendChild(item);
+});
+const writingList = document.getElementById('writingList');
+WRITING.forEach(w => {
+  const item = document.createElement('div'); item.className = 'writing-item';
+  item.innerHTML = `<div class="para">${w.para}</div><div class="para-cn">${w.para_cn}</div><div class="tip-text">${w.tip}</div>`;
+  writingList.appendChild(item);
+});
+const becList = document.getElementById('becList');
+const speechState = {};
+BEC_MATERIALS.forEach(m => {
+  const item = document.createElement('div'); item.className = 'bec-item'; item.id = m.id;
+  const controls = document.createElement('div'); controls.className = 'bec-controls';
+  const playBtn = document.createElement('button'); playBtn.className = 'bec-btn bec-btn-play'; playBtn.innerHTML = '▶ 朗读'; playBtn.dataset.id = m.id;
+  const stopBtn = document.createElement('button'); stopBtn.className = 'bec-btn bec-btn-stop'; stopBtn.innerHTML = '⏹ 停止'; stopBtn.dataset.id = m.id;
+  const subBtn = document.createElement('button'); subBtn.className = 'bec-btn bec-btn-subtitle'; subBtn.innerHTML = '📄 字幕'; subBtn.dataset.id = m.id;
+  controls.appendChild(playBtn); controls.appendChild(stopBtn); controls.appendChild(subBtn);
+  const subtitleBox = document.createElement('div'); subtitleBox.className = 'subtitle-box'; subtitleBox.id = `sub-${m.id}`;
+  subtitleBox.innerHTML = m.script.map(s => `<div class="sub-en">${s.en}</div><div class="sub-cn">${s.cn}</div>`).join('');
+  const tasksDiv = document.createElement('div'); tasksDiv.className = 'bec-tasks';
+  tasksDiv.innerHTML = `<div class="task-title">听力任务</div><ul>${m.tasks.map(t => `<li>${t}</li>`).join('')}</ul>`;
+  const vocabDiv = document.createElement('div'); vocabDiv.className = 'bec-vocab';
+  vocabDiv.innerHTML = `<div class="vocab-title">重点词汇</div><div class="vocab-grid-small">${m.vocab.map(v => `<span class="vocab-chip">${v}</span>`).join('')}</div>`;
+  item.innerHTML = `<div class="bec-title">${m.title}</div><div class="bec-scene">${m.scene}</div>`;
+  item.appendChild(controls); item.appendChild(subtitleBox); item.appendChild(tasksDiv); item.appendChild(vocabDiv);
+  becList.appendChild(item); speechState[m.id] = { utterance: null, speaking: false };
+  playBtn.addEventListener('click', () => {
+    if (speechState[m.id].speaking) return;
+    if (!window.speechSynthesis) { alert('您的浏览器不支持语音朗读功能。'); return; }
+    const fullText = m.script.map(s => s.en).join(' ');
+    const utterance = new SpeechSynthesisUtterance(fullText);
+    utterance.lang = 'en-US'; utterance.rate = 0.85; utterance.pitch = 1.0;
+    speechState[m.id].utterance = utterance; speechState[m.id].speaking = true;
+    playBtn.classList.add('bec-btn-playing'); playBtn.innerHTML = '🔊 朗读中...';
+    utterance.onend = () => { speechState[m.id].speaking = false; playBtn.classList.remove('bec-btn-playing'); playBtn.innerHTML = '▶ 朗读'; };
+    utterance.onerror = () => { speechState[m.id].speaking = false; playBtn.classList.remove('bec-btn-playing'); playBtn.innerHTML = '▶ 朗读'; };
+    window.speechSynthesis.speak(utterance);
+  });
+  stopBtn.addEventListener('click', () => {
+    if (!speechState[m.id].speaking) return;
+    window.speechSynthesis.cancel(); speechState[m.id].speaking = false;
+    playBtn.classList.remove('bec-btn-playing'); playBtn.innerHTML = '▶ 朗读';
+  });
+  subBtn.addEventListener('click', () => {
+    const box = document.getElementById(`sub-${m.id}`); box.classList.toggle('show'); subBtn.classList.toggle('active');
+    subBtn.innerHTML = box.classList.contains('show') ? '📄 隐藏字幕' : '📄 字幕';
+  });
+});
+window.addEventListener('scroll', () => {
+  const h = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+  const p = (window.scrollY / h) * 100;
+  document.getElementById('progressFill').style.width = Math.min(p, 100) + '%';
+});
+</script>
+</body>
+</html>

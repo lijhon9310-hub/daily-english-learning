@@ -1,0 +1,693 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>每日英语学习 · 2026-07-04</title>
+<style>
+:root {
+  --primary: #4f46e5;
+  --primary-light: #eef2ff;
+  --accent: #f59e0b;
+  --bg: #f8fafc;
+  --card-bg: #ffffff;
+  --text: #1e293b;
+  --text-secondary: #64748b;
+  --border: #e2e8f0;
+  --success: #10b981;
+  --shadow: 0 1px 3px rgba(0,0,0,0.06), 0 1px 2px rgba(0,0,0,0.04);
+  --shadow-hover: 0 10px 25px -5px rgba(0,0,0,0.1), 0 8px 10px -6px rgba(0,0,0,0.04);
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.6;
+  padding-bottom: 80px;
+}
+
+header {
+  background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%);
+  color: white;
+  padding: 40px 20px 30px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+header::after {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle at 30% 50%, rgba(255,255,255,0.08) 0%, transparent 60%);
+  pointer-events: none;
+}
+header h1 { font-size: 1.5rem; font-weight: 700; letter-spacing: 0.5px; }
+header .date { font-size: 0.85rem; opacity: 0.85; margin-top: 6px; letter-spacing: 1px; }
+header .theme-badge {
+  display: inline-block;
+  margin-top: 10px;
+  padding: 4px 16px;
+  background: rgba(255,255,255,0.2);
+  backdrop-filter: blur(4px);
+  border-radius: 20px;
+  font-size: 0.8rem;
+  font-weight: 500;
+}
+
+.container { max-width: 800px; margin: 0 auto; padding: 16px; }
+
+.section { margin-top: 24px; }
+.section-title {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--primary);
+  padding: 12px 16px;
+  background: var(--primary-light);
+  border-radius: 12px;
+  margin-bottom: 16px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.section-title .badge {
+  font-size: 0.75rem;
+  background: var(--primary);
+  color: white;
+  padding: 2px 10px;
+  border-radius: 10px;
+  margin-left: auto;
+}
+
+/* Vocabulary Cards */
+.vocab-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 12px;
+}
+.vocab-card {
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 16px;
+  transition: all 0.2s ease;
+  cursor: default;
+}
+.vocab-card:hover {
+  box-shadow: var(--shadow-hover);
+  transform: translateY(-2px);
+}
+.vocab-card .word {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--text);
+}
+.vocab-card .phonetic {
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  font-family: 'IPA', 'Times New Roman', serif;
+  margin-top: 2px;
+}
+.vocab-card .meaning {
+  font-size: 0.95rem;
+  color: var(--primary);
+  font-weight: 600;
+  margin-top: 6px;
+}
+.vocab-card .example {
+  font-size: 0.85rem;
+  color: var(--text);
+  margin-top: 8px;
+  padding: 8px 10px;
+  background: #f8fafc;
+  border-radius: 8px;
+  border-left: 3px solid var(--accent);
+}
+.vocab-card .example-cn {
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+  margin-top: 4px;
+}
+.vocab-card .tip {
+  font-size: 0.8rem;
+  color: var(--success);
+  margin-top: 8px;
+  padding: 6px 10px;
+  background: #f0fdf4;
+  border-radius: 8px;
+}
+.vocab-card .tip::before { content: '💡 '; }
+
+/* Dialogues */
+.dialogue-item {
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 16px;
+  margin-bottom: 12px;
+}
+.dialogue-item .scene {
+  font-size: 0.75rem;
+  color: var(--primary);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 6px;
+}
+.dialogue-item .en { font-size: 0.95rem; color: var(--text); }
+.dialogue-item .cn { font-size: 0.85rem; color: var(--text-secondary); margin-top: 4px; }
+
+/* Writing */
+.writing-item {
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 16px;
+  margin-bottom: 12px;
+}
+.writing-item .para {
+  font-size: 0.9rem;
+  color: var(--text);
+  padding: 10px 12px;
+  background: #f8fafc;
+  border-radius: 8px;
+  border-left: 3px solid var(--primary);
+}
+.writing-item .para-cn {
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  margin-top: 8px;
+}
+.writing-item .tip-text {
+  font-size: 0.8rem;
+  color: var(--accent);
+  margin-top: 8px;
+  padding: 6px 10px;
+  background: #fffbeb;
+  border-radius: 8px;
+}
+.writing-item .tip-text::before { content: '✏️ '; }
+
+/* BEC Listening */
+.bec-item {
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 16px;
+  margin-bottom: 20px;
+}
+.bec-item .bec-title {
+  font-weight: 700;
+  font-size: 1rem;
+  color: var(--text);
+  margin-bottom: 4px;
+}
+.bec-item .bec-scene {
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+  margin-bottom: 12px;
+}
+
+.bec-controls {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-bottom: 12px;
+}
+.bec-btn {
+  padding: 8px 16px;
+  border: none;
+  border-radius: 8px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+.bec-btn:active { transform: scale(0.96); }
+.bec-btn-play {
+  background: var(--primary);
+  color: white;
+}
+.bec-btn-play:hover { background: #4338ca; }
+.bec-btn-stop {
+  background: #ef4444;
+  color: white;
+}
+.bec-btn-stop:hover { background: #dc2626; }
+.bec-btn-subtitle {
+  background: var(--border);
+  color: var(--text);
+}
+.bec-btn-subtitle.active {
+  background: var(--accent);
+  color: white;
+}
+.bec-btn-playing {
+  background: #10b981 !important;
+  animation: pulse 1.5s infinite;
+}
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.7; }
+}
+
+.subtitle-box {
+  display: none;
+  margin-top: 12px;
+  padding: 12px;
+  background: #f1f5f9;
+  border-radius: 8px;
+  font-size: 0.85rem;
+  line-height: 1.8;
+}
+.subtitle-box.show { display: block; }
+.subtitle-box .sub-en { color: var(--text); }
+.subtitle-box .sub-cn { color: var(--text-secondary); margin-top: 4px; padding-left: 8px; border-left: 2px solid var(--accent); }
+
+.bec-tasks {
+  margin-top: 12px;
+  padding: 12px;
+  background: #f0fdf4;
+  border-radius: 8px;
+}
+.bec-tasks .task-title {
+  font-weight: 700;
+  font-size: 0.85rem;
+  color: var(--success);
+  margin-bottom: 6px;
+}
+.bec-tasks .task-title::before { content: '📝 '; }
+.bec-tasks ul { padding-left: 20px; font-size: 0.82rem; color: var(--text); }
+.bec-tasks ul li { margin-bottom: 4px; }
+
+.bec-vocab {
+  margin-top: 12px;
+  padding: 12px;
+  background: #f8fafc;
+  border-radius: 8px;
+}
+.bec-vocab .vocab-title {
+  font-weight: 700;
+  font-size: 0.85rem;
+  color: var(--primary);
+  margin-bottom: 6px;
+}
+.bec-vocab .vocab-title::before { content: '📖 '; }
+.bec-vocab .vocab-grid-small {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+.bec-vocab .vocab-chip {
+  padding: 4px 10px;
+  background: var(--primary-light);
+  border-radius: 12px;
+  font-size: 0.78rem;
+  color: var(--primary);
+}
+
+/* Footer */
+footer {
+  text-align: center;
+  padding: 30px 20px;
+  color: var(--text-secondary);
+  font-size: 0.8rem;
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+  header { padding: 30px 16px 24px; }
+  header h1 { font-size: 1.25rem; }
+  .vocab-grid { grid-template-columns: 1fr; }
+  .container { padding: 12px; }
+  .bec-controls { gap: 6px; }
+  .bec-btn { font-size: 0.78rem; padding: 6px 12px; }
+}
+
+/* Smooth scroll */
+html { scroll-behavior: smooth; }
+
+/* Progress bar */
+.progress-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background: var(--border);
+  z-index: 1000;
+}
+.progress-bar-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--primary), var(--accent));
+  width: 0;
+  transition: width 0.3s ease;
+}
+</style>
+</head>
+<body>
+
+<div class="progress-bar"><div class="progress-bar-fill" id="progressFill"></div></div>
+
+<header>
+  <h1>📖 每日英语学习</h1>
+  <div class="date">2026 年 7 月 4 日 · 星期六</div>
+  <div class="theme-badge">🎯 今日主题：职场沟通 & 日常生活</div>
+</header>
+
+<div class="container">
+
+<!-- ============ SECTION 1: VOCABULARY ============ -->
+<div class="section" id="vocab">
+  <div class="section-title">
+    📚 实用英语单词
+    <span class="badge">10</span>
+  </div>
+  <div class="vocab-grid" id="vocabGrid"></div>
+</div>
+
+<!-- ============ SECTION 2: DIALOGUES ============ -->
+<div class="section" id="dialogue">
+  <div class="section-title">
+    💬 每日对话
+    <span class="badge">10 句</span>
+  </div>
+  <div id="dialogueList"></div>
+</div>
+
+<!-- ============ SECTION 3: WRITING ============ -->
+<div class="section" id="writing">
+  <div class="section-title">
+    ✍️ 英文写作段落
+    <span class="badge">5 段</span>
+  </div>
+  <div id="writingList"></div>
+</div>
+
+<!-- ============ SECTION 4: BEC LISTENING ============ -->
+<div class="section" id="bec">
+  <div class="section-title">
+    🎧 BEC 中级听力
+    <span class="badge">2 段</span>
+  </div>
+  <div id="becList"></div>
+</div>
+
+<footer>Daily English Learning · 每天进步一点点 🚀</footer>
+</div>
+
+<script>
+// ==================== DATA ====================
+const VOCABULARY = [
+  { word: 'Follow up', phonetic: '/ˈfɒloʊ ʌp/', meaning: '跟进，后续处理', example: 'I need to follow up with the client about the proposal we sent last week.', example_cn: '我需要跟进上周发给客户的提案。', tip: '职场高频搭配，想象你发完邮件后"追上去"确认对方收到了。' },
+  { word: 'Deadline', phonetic: '/ˈdedlaɪn/', meaning: '截止日期', example: 'The deadline for the quarterly report is this Friday at 5 PM.', example_cn: '季度报告的截止日期是本周五下午5点。', tip: 'dead（死亡）+ line（线），过了线就"死"了——所以千万别错过！' },
+  { word: 'Agenda', phonetic: '/əˈdʒendə/', meaning: '议程，议事日程', example: 'Please review the meeting agenda before tomorrow\'s team stand-up.', example_cn: '请在明天团队站会前审阅会议议程。', tip: '联想"agency（代理）"——代理人需要知道会议要讨论什么。' },
+  { word: 'Collaborate', phonetic: '/kəˈlæbəreɪt/', meaning: '协作，合作', example: 'Our marketing and sales teams need to collaborate more closely on the campaign.', example_cn: '我们的市场和销售团队需要在这次活动中更紧密地协作。', tip: 'co-（共同）+ labor（劳动）+ ate（动词后缀），一起劳动就是协作。' },
+  { word: 'Streamline', phonetic: '/ˈstriːmlaɪn/', meaning: '精简，提高效率', example: 'We should streamline the approval process to reduce turnaround time.', example_cn: '我们应该精简审批流程以减少周转时间。', tip: 'stream（溪流）+ line（线），让工作像流水一样顺畅。' },
+  { word: 'Deliverable', phonetic: '/dɪˈlɪvərəbl/', meaning: '可交付成果', example: 'The key deliverables for this sprint include the user authentication module and dashboard.', example_cn: '本次迭代的关键交付物包括用户认证模块和仪表盘。', tip: 'deliver（交付）+ able（能够），"能够交付的东西"就是成果物。' },
+  { word: 'Stakeholder', phonetic: '/ˈsteɪkhoʊldər/', meaning: '利益相关者', example: 'We need to get buy-in from all stakeholders before moving forward.', example_cn: '在推进之前，我们需要获得所有利益相关者的支持。', tip: 'stake（赌注/利益）+ holder（持有者），持有利益的人就是利益相关方。' },
+  { word: 'Onboard', phonetic: '/ˌɒnˈbɔːrd/', meaning: '入职，使融入', example: 'The HR team has designed a new program to onboard remote employees more effectively.', example_cn: 'HR团队设计了一个新方案来更有效地让远程员工融入。', tip: 'on（上）+ board（板/船），"上船了"就是新人加入团队。' },
+  { word: 'Benchmark', phonetic: '/ˈbentʃmɑːrk/', meaning: '基准，标杆', example: 'We use industry benchmarks to evaluate our customer satisfaction scores.', example_cn: '我们使用行业基准来评估客户满意度评分。', tip: 'bench（长凳）+ mark（标记），以前石匠在长凳上做标记作为测量基准。' },
+  { word: 'Scalable', phonetic: '/ˈskeɪləbl/', meaning: '可扩展的', example: 'We need to build a scalable infrastructure that can handle 10x the current traffic.', example_cn: '我们需要构建一个能处理当前10倍流量的可扩展基础设施。', tip: 'scale（规模）+ able（能够），能扩大规模的系统就是 scalable。' },
+];
+
+const DIALOGUES = [
+  { scene: '⑨ 晨会汇报', en: 'Good morning, everyone. Let\'s go around and share our progress from yesterday.', cn: '大家早上好。我们轮流分享一下昨天的进展。' },
+  { scene: '⑨ 预约会议', en: 'Would you be available for a 30-minute call sometime tomorrow afternoon?', cn: '你明天下午有空打个30分钟的电话吗？' },
+  { scene: '⑨ 咖啡馆点单', en: 'I\'ll have a latte with oat milk, please. To go.', cn: '请给我一杯燕麦拿铁，打包带走。' },
+  { scene: '⑩ 询问方向', en: 'Excuse me, could you tell me how to get to the nearest subway station?', cn: '不好意思，请问最近的地铁站怎么走？' },
+  { scene: '⑩ 项目延期', en: 'Due to some unforeseen issues, we may need to push back the deadline by a week.', cn: '由于一些不可预见的问题，我们可能需要将截止日期推迟一周。' },
+  { scene: '⑩ 餐厅点餐', en: 'Could I get the grilled salmon with a side of vegetables, please?', cn: '请给我一份烤三文鱼配蔬菜。' },
+  { scene: '⑩ 请假沟通', en: 'I\'m feeling a bit under the weather, so I\'d like to take a sick day today.', cn: '我身体有些不舒服，今天想请一天病假。' },
+  { scene: '⑩ 周末计划', en: 'Are you doing anything this weekend? I was thinking of checking out that new hiking trail.', cn: '这周末有安排吗？我想去看看那条新的徒步路线。' },
+  { scene: '⑩ 团队反馈', en: 'I really appreciate your input on the project. Your insights made a big difference.', cn: '非常感谢你在项目中的贡献，你的见解起到了很大的作用。' },
+  { scene: '⑩ 商务电话', en: 'Let me just confirm what I\'ve understood from our conversation so far.', cn: '让我确认一下我在我们通话中理解的信息。' },
+];
+
+const WRITING = [
+  {
+    para: 'I hope this message finds you well. I am writing to follow up on our discussion from last week regarding the Q3 marketing strategy. Please find attached the updated proposal for your review.',
+    para_cn: '见信好。我写信是为了跟进我们上周关于Q3营销策略的讨论。附件中是更新后的提案，请您审阅。',
+    tip: '邮件开场的标准句式。' + ' "I hope this message finds you well" 是英文邮件最安全的开场白，适用于大多数正式场合。'
+  },
+  {
+    para: 'During today\'s meeting, we reviewed the progress of Project Alpha and identified three key action items. We agreed that the development phase will be completed by August 15, followed by a two-week testing period.',
+    para_cn: '在今天的会议中，我们审阅了Alpha项目的进展，确定了三个关键行动项。我们一致同意开发阶段将于8月15日完成，随后进入为期两周的测试期。',
+    tip: '会议纪要的结构：背景 + 决议 + 时间节点。使用 "we agreed / we identified / we reviewed" 等客观描述句型。'
+  },
+  {
+    para: 'As of this week, we have completed 70% of the milestones outlined in the project roadmap. The integration testing is on track, and we expect to deliver the final version by the end of the month. However, we are facing a minor resource constraint on the front-end development side.',
+    para_cn: '截至本周，我们已经完成了项目路线图中70%的里程碑。集成测试按计划进行，预计月底交付最终版本。不过，前端开发方面存在轻微的资源紧张。',
+    tip: '进度汇报的"三明治法则"：先说好消息（进展顺利）→ 再说问题（资源紧张）→ 暗示解决方案。避免一上来就抱怨。'
+  },
+  {
+    para: 'I would like to express my sincere gratitude for your support throughout this project. Your expertise and guidance were instrumental in helping us navigate the challenges we encountered. I truly appreciate the time and effort you have invested.',
+    para_cn: '我想对您在整个项目中给予的支持表示诚挚的感谢。您的专业知识和指导帮助我们克服了遇到的挑战。我真心感谢您投入的时间和精力。',
+    tip: '感谢信要具体：不要只说 "thank you"，要提到对方具体做了什么（expertise, guidance, time and effort），这样显得真诚。'
+  },
+  {
+    para: 'I apologize for the delay in submitting the report. Due to unforeseen technical issues with our data system, we needed additional time to verify the accuracy of the figures. I have attached the completed report and would be happy to discuss any concerns.',
+    para_cn: '我对延迟提交报告表示歉意。由于我们的数据系统出现了不可预见的技术问题，我们需要额外的时间来核实数据的准确性。已完成报告见附件，我很乐意讨论任何问题。',
+    tip: '道歉/解释的结构：道歉 → 简短说明原因（不要过度辩解）→ 给出解决方案/补救措施。关键是不找借口，而是展现出专业态度。'
+  },
+];
+
+const BEC_MATERIALS = [
+  {
+    id: 'bec1',
+    title: '谈判新合同条款',
+    scene: '场景：两家公司的商务代表正在谈判一份新的年度服务合同',
+    script: [
+      { en: 'Good morning, Ms. Chen. Thank you for coming in today to discuss the renewal of our service agreement.', cn: '早上好，陈女士。感谢您今天来讨论我们服务协议的续约事宜。' },
+      { en: 'Good morning, Mr. Thompson. We\'ve reviewed your proposal carefully, and we have a few points we\'d like to address.', cn: '早上好，汤普森先生。我们仔细审阅了贵方的提案，有几个点想提出来讨论。' },
+      { en: 'Of course. Please go ahead. We\'re keen to reach a mutually beneficial agreement.', cn: '当然，请讲。我们非常希望达成一个双方互利的协议。' },
+      { en: 'First, regarding the pricing structure. We believe a 15% increase is quite steep given the current market conditions.', cn: '首先是定价结构。我们认为在当前市场环境下，15%的涨幅偏高。' },
+      { en: 'I understand your concern. However, our costs for raw materials have risen significantly over the past year.', cn: '我理解您的顾虑。但过去一年我们的原材料成本大幅上涨了。' },
+      { en: 'We appreciate that, but we\'re prepared to commit to a three-year contract if you can offer a more competitive rate.', cn: '我们理解这一点。但如果贵方能提供更有竞争力的价格，我们准备签三年合约。' },
+      { en: 'A three-year commitment is certainly appealing. Let me see what we can do. Would an 8% increase with a volume discount structure work for you?', cn: '三年期的承诺确实很有吸引力。让我看看我们能做些什么。8%的涨幅加阶梯折扣结构，您看可以吗？' },
+      { en: 'That sounds more reasonable. Could we also discuss the service level agreement? We\'d like a guaranteed response time of 4 hours for critical issues.', cn: '听起来合理多了。我们能否也讨论一下服务等级协议？我们希望关键问题的响应时间保证在4小时内。' },
+      { en: 'That\'s achievable with some adjustments to our support team structure. I\'ll have our team draft a revised proposal by Friday.', cn: '通过对我们支持团队结构的调整，这是可以实现的。我会让我们团队在周五前起草一份修改后的提案。' },
+      { en: 'Excellent. We look forward to reviewing it. I believe we\'re making good progress today.', cn: '太好了。我们期待审阅修改方案。我相信今天我们的进展不错。' },
+    ],
+    tasks: [
+      '陈女士对价格提案的主要顾虑是什么？',
+      '她提出什么样的条件来换取更优惠的价格？',
+      '汤普森先生给出的最终价格调整方案是什么？',
+      '双方在服务等级协议上讨论的具体内容是什么？',
+      '汤普森先生承诺在什么时间之前交付修改方案？'
+    ],
+    vocab: ['renewal', 'mutually beneficial', 'pricing structure', 'steep', 'volume discount', 'service level agreement (SLA)', 'response time', 'critical issues', 'draft']
+  },
+  {
+    id: 'bec2',
+    title: '产品发布筹备会议',
+    scene: '场景：市场部团队正在召开新产品上市的筹备会议',
+    script: [
+      { en: 'Alright everyone, let\'s get started. The product launch is six weeks away, so we need to finalize our marketing plan today.', cn: '好了各位，我们开始吧。产品发布还有六周时间，所以今天必须敲定营销计划。' },
+      { en: 'I\'ve prepared a timeline for the promotional campaign. We\'ll kick off with a teaser video two weeks before the launch.', cn: '我已经准备好了推广活动的时间表。我们会在发布前两周先发布一支预告视频。' },
+      { en: 'Sounds good. What about social media? We need to build some momentum beforehand.', cn: '听起来不错。社交媒体方面呢？我们需要提前造势。' },
+      { en: 'We\'ve lined up three influencers in the tech space to do early reviews. They have a combined reach of over 500,000 followers.', cn: '我们已经安排了三位科技领域的影响者做早期测评。他们的粉丝总数超过50万。' },
+      { en: 'That\'s a solid strategy. What\'s the budget allocation for paid advertising?', cn: '策略很扎实。付费广告的预算分配是怎样的？' },
+      { en: 'We\'re allocating 40% to LinkedIn ads targeting industry professionals, 35% to Google Ads, and 25% to content sponsorship.', cn: '我们计划40%投放在针对行业专业人士的领英广告，35%投放在谷歌广告，25%用于内容赞助。' },
+      { en: 'I\'d suggest shifting a bit more towards content marketing. White papers and case studies tend to generate more qualified leads for our product.', cn: '我建议多分配一些给内容营销。白皮书和案例研究通常能为我们的产品带来更多优质线索。' },
+      { en: 'That\'s a valid point. How about we adjust to 35% LinkedIn, 30% Google Ads, and 35% content?', cn: '有道理。那调整为35%领英、30%谷歌广告、35%内容，怎么样？' },
+      { en: 'That works. Also, we should prepare a FAQ document for the sales team so they can handle customer questions consistently.', cn: '可以。另外，我们应该为销售团队准备一份常见问题解答文档，这样他们能统一回应客户问题。' },
+      { en: 'Good idea. I\'ll assign Sarah to draft that. Let\'s aim to have everything ready by the end of next week.', cn: '好主意。我让Sarah来起草。争取下周结束前所有准备到位。' },
+    ],
+    tasks: [
+      '距离产品发布还有多长时间？',
+      '推广活动的时间线是如何安排的？',
+      '团队在付费广告之外还采用了什么策略来造势？',
+      '广告预算的分配方案最终是如何调整的？',
+      '会议最后决定为销售团队准备什么材料？'
+    ],
+    vocab: ['product launch', 'finalize', 'promotional campaign', 'teaser', 'momentum', 'influencer', 'budget allocation', 'qualified leads', 'FAQ document']
+  }
+];
+
+// ==================== RENDER ====================
+// Vocabulary
+const vocabGrid = document.getElementById('vocabGrid');
+VOCABULARY.forEach(v => {
+  const card = document.createElement('div');
+  card.className = 'vocab-card';
+  card.innerHTML = `
+    <div class="word">${v.word}</div>
+    <div class="phonetic">${v.phonetic}</div>
+    <div class="meaning">${v.meaning}</div>
+    <div class="example">${v.example}</div>
+    <div class="example-cn">${v.example_cn}</div>
+    <div class="tip">${v.tip}</div>
+  `;
+  vocabGrid.appendChild(card);
+});
+
+// Dialogues
+const dialogueList = document.getElementById('dialogueList');
+DIALOGUES.forEach(d => {
+  const item = document.createElement('div');
+  item.className = 'dialogue-item';
+  item.innerHTML = `
+    <div class="scene">${d.scene}</div>
+    <div class="en">${d.en}</div>
+    <div class="cn">${d.cn}</div>
+  `;
+  dialogueList.appendChild(item);
+});
+
+// Writing
+const writingList = document.getElementById('writingList');
+WRITING.forEach(w => {
+  const item = document.createElement('div');
+  item.className = 'writing-item';
+  item.innerHTML = `
+    <div class="para">${w.para}</div>
+    <div class="para-cn">${w.para_cn}</div>
+    <div class="tip-text">${w.tip}</div>
+  `;
+  writingList.appendChild(item);
+});
+
+// BEC Listening
+const becList = document.getElementById('becList');
+const speechState = {};
+
+BEC_MATERIALS.forEach(m => {
+  const item = document.createElement('div');
+  item.className = 'bec-item';
+  item.id = m.id;
+
+  const controls = document.createElement('div');
+  controls.className = 'bec-controls';
+
+  const playBtn = document.createElement('button');
+  playBtn.className = 'bec-btn bec-btn-play';
+  playBtn.innerHTML = '▶ 朗读';
+  playBtn.dataset.id = m.id;
+
+  const stopBtn = document.createElement('button');
+  stopBtn.className = 'bec-btn bec-btn-stop';
+  stopBtn.innerHTML = '⏹ 停止';
+  stopBtn.dataset.id = m.id;
+
+  const subBtn = document.createElement('button');
+  subBtn.className = 'bec-btn bec-btn-subtitle';
+  subBtn.innerHTML = '📄 字幕';
+  subBtn.dataset.id = m.id;
+
+  controls.appendChild(playBtn);
+  controls.appendChild(stopBtn);
+  controls.appendChild(subBtn);
+
+  const subtitleBox = document.createElement('div');
+  subtitleBox.className = 'subtitle-box';
+  subtitleBox.id = `sub-${m.id}`;
+  subtitleBox.innerHTML = m.script.map(s => `
+    <div class="sub-en">${s.en}</div>
+    <div class="sub-cn">${s.cn}</div>
+  `).join('');
+
+  // Tasks
+  const tasksDiv = document.createElement('div');
+  tasksDiv.className = 'bec-tasks';
+  tasksDiv.innerHTML = `
+    <div class="task-title">听力任务</div>
+    <ul>${m.tasks.map(t => `<li>${t}</li>`).join('')}</ul>
+  `;
+
+  // Vocab
+  const vocabDiv = document.createElement('div');
+  vocabDiv.className = 'bec-vocab';
+  vocabDiv.innerHTML = `
+    <div class="vocab-title">重点词汇</div>
+    <div class="vocab-grid-small">${m.vocab.map(v => `<span class="vocab-chip">${v}</span>`).join('')}</div>
+  `;
+
+  item.innerHTML = `
+    <div class="bec-title">${m.title}</div>
+    <div class="bec-scene">${m.scene}</div>
+  `;
+  item.appendChild(controls);
+  item.appendChild(subtitleBox);
+  item.appendChild(tasksDiv);
+  item.appendChild(vocabDiv);
+  becList.appendChild(item);
+
+  // Speech state
+  speechState[m.id] = { utterance: null, speaking: false };
+
+  // Play
+  playBtn.addEventListener('click', () => {
+    if (speechState[m.id].speaking) return;
+    if (!window.speechSynthesis) { alert('您的浏览器不支持语音朗读功能。'); return; }
+
+    const fullText = m.script.map(s => s.en).join(' ');
+    const utterance = new SpeechSynthesisUtterance(fullText);
+    utterance.lang = 'en-US';
+    utterance.rate = 0.85;
+    utterance.pitch = 1.0;
+
+    speechState[m.id].utterance = utterance;
+    speechState[m.id].speaking = true;
+    playBtn.classList.add('bec-btn-playing');
+    playBtn.innerHTML = '🔊 朗读中...';
+
+    utterance.onend = () => {
+      speechState[m.id].speaking = false;
+      playBtn.classList.remove('bec-btn-playing');
+      playBtn.innerHTML = '▶ 朗读';
+    };
+
+    utterance.onerror = () => {
+      speechState[m.id].speaking = false;
+      playBtn.classList.remove('bec-btn-playing');
+      playBtn.innerHTML = '▶ 朗读';
+    };
+
+    window.speechSynthesis.speak(utterance);
+  });
+
+  // Stop
+  stopBtn.addEventListener('click', () => {
+    if (!speechState[m.id].speaking) return;
+    window.speechSynthesis.cancel();
+    speechState[m.id].speaking = false;
+    playBtn.classList.remove('bec-btn-playing');
+    playBtn.innerHTML = '▶ 朗读';
+  });
+
+  // Subtitle toggle
+  subBtn.addEventListener('click', () => {
+    const box = document.getElementById(`sub-${m.id}`);
+    box.classList.toggle('show');
+    subBtn.classList.toggle('active');
+    subBtn.innerHTML = box.classList.contains('show') ? '📄 隐藏字幕' : '📄 字幕';
+  });
+});
+
+// ==================== READING PROGRESS ====================
+window.addEventListener('scroll', () => {
+  const h = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+  const p = (window.scrollY / h) * 100;
+  document.getElementById('progressFill').style.width = Math.min(p, 100) + '%';
+});
+
+// ==================== SMOOTH ANCHOR SCROLL ====================
+document.querySelectorAll('a[href^="#"]').forEach(a => {
+  a.addEventListener('click', e => {
+    e.preventDefault();
+    const target = document.querySelector(a.getAttribute('href'));
+    if (target) target.scrollIntoView({ behavior: 'smooth' });
+  });
+});
+</script>
+</body>
+</html>
